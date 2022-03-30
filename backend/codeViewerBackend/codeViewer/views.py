@@ -101,8 +101,17 @@ def tasks(request):
 @api_view(['GET', 'POST'])
 def task_details(request):
     if request.method == 'GET':
-        # TODO
-        return JsonResponse({}, status=status.HTTP_400_BAD_REQUEST)
+        task_id = request.query_params.get('id', None)
+        if task_id:
+            if Task.objects.filter(id=task_id).exists():
+                task = Task.objects.get(id=task_id)
+            else:
+                return JsonResponse({}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return JsonResponse({}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = TaskSerializer(task, many=False)
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK, safe=False)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = TaskSerializer(data=data)
@@ -123,8 +132,17 @@ def solutions(request):
 @api_view(['GET', 'POST'])
 def solution_details(request):
     if request.method == 'GET':
-        # TODO
-        return JsonResponse({}, status=status.HTTP_400_BAD_REQUEST)
+        solution_id = request.query_params.get('id', None)
+        if solution_id:
+            if Solution.objects.filter(id=solution_id).exists():
+                solution = Solution.objects.get(id=solution_id)
+            else:
+                return JsonResponse({}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return JsonResponse({}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = SolutionSerializer(solution, many=False)
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK, safe=False)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = SolutionSerializer(data=data)

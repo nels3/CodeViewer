@@ -23,6 +23,7 @@ TAG_CHOICES = [
 
 class Task(models.Model):
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True)
     order = models.CharField(max_length=10, default=1)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=1200, null=True, blank=True)
