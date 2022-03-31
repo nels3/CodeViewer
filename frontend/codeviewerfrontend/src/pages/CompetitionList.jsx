@@ -1,7 +1,50 @@
-export default function CompetitionList() {
-    return (
-      <main>
-        <h2>Competition List</h2>
-      </main>
-    );
-  }
+import { RootState } from '../store/store'
+import { fetchCompetitionsList } from '../store/slices/competitions/competitionsThunk'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
+import Table from '../components/common/Table'
+
+export default function CompetitionList () {
+  const competitionSeries = useSelector((state: RootState) => state.competitions.competitionSeries)
+  const competitionList = useSelector((state: RootState) => state.competitions.list)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    document.title = `Competitions`
+    if (competitionList.length == 0) {
+      dispatch(fetchCompetitionsList(competitionSeries))
+    }
+  }, [])
+
+  const columns = useMemo(() => [
+    {
+      Header: 'Name',
+      accessor: 'name'
+    },
+    {
+      Header: 'Link',
+      accessor: 'link',
+      Cell: ({ cell: { value } }) => (
+        <a target='_blank' href={value}>
+          {value}
+        </a>
+      )
+    },
+    {
+      Header: 'Series',
+      accessor: 'series',
+    },
+    {
+      Header: 'Tasks',
+      accessor: 'tasks_count',
+    }
+  ])
+
+  return (
+    <div style={{ padding: '10px' }}>
+      <h3>Showing competition for: {competitionSeries} series</h3>
+      <Table columns={columns} data={competitionList} />
+    </div>
+  )
+}

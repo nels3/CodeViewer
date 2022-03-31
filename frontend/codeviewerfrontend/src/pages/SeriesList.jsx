@@ -33,12 +33,10 @@ export default function SeriesList () {
     {
       Header: 'Competitions',
       accessor: 'competitions_count',
-      width: '100px'
     },
     {
       Header: 'Tasks',
       accessor: 'tasks_count',
-      width: '100px'
     }
   ])
 

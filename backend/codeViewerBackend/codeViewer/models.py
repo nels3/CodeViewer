@@ -11,6 +11,7 @@ class Competition(models.Model):
     series = models.ForeignKey(CompetitionSeries, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, primary_key=True)
     date = models.DateField('date of competition', null=True)
+    link = models.CharField(max_length=200, null=True, blank=True)
     objects = models.Manager()
 
 

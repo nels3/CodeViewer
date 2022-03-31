@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import seriesReducer from './slices/series/seriesSlice'
+import competitionsReducer from './slices/competitions/competitionsSlice'
 
 export const store = configureStore({
   reducer: {
-    series: seriesReducer
+    series: seriesReducer,
+    competitions: competitionsReducer
   }
 })
 

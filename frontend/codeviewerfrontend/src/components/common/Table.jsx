@@ -12,7 +12,6 @@ export default function Table ({ columns, data }) {
     columns,
     data
   })
-  console.log(headerGroups)
   return (
     <table style={{ width: '100%' }} {...getTableProps()}>
       <thead>

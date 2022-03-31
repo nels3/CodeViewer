@@ -36,7 +36,7 @@ def competition_series_details(request):
 def competitions(request):
     if request.method == 'GET':
         series_name = request.query_params.get('series', None)
-        if series_name:
+        if series_name and series_name != "All":
             if CompetitionSeries.objects.filter(name=series_name).exists():
                 series = CompetitionSeries.objects.get(name=series_name)
                 competition_list = Competition.objects.filter(series=series)
