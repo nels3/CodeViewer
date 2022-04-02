@@ -83,3 +83,7 @@ tr:hover td {
 tr:hover tr {
   background-color: #e3c4e6;
 }
+
+.dropdown-toggle {
+  min-width:200px
+}
