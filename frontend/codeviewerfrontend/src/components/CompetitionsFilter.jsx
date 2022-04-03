@@ -7,8 +7,8 @@ import { setCompetitionSeries } from "../store/slices/competitions/competitionsS
 import { fetchSeriesList } from "../store/slices/series/seriesThunk";
 
 export default function CompetitionsFilter() {
-  const series_names = useSelector((state: RootState) => state.series.names);
-  const selected_series = useSelector(
+  const seriesNames = useSelector((state: RootState) => state.series.names);
+  const selectedSeries = useSelector(
     (state: RootState) => state.competitions.competitionSeries
   );
   const dispatch = useDispatch();
@@ -18,8 +18,7 @@ export default function CompetitionsFilter() {
   };
 
   useEffect(() => {
-    document.title = `Series`;
-    if (series_names.length === 0) {
+    if (seriesNames.length === 0) {
       dispatch(fetchSeriesList());
     }
   });
@@ -30,8 +29,8 @@ export default function CompetitionsFilter() {
         Selected series:
       </h5>
       <Dropdown
-        options={series_names}
-        title={selected_series}
+        options={seriesNames}
+        title={selectedSeries}
         action={setSelectedSeries}
       />
     </div>

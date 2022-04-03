@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import TasksFilter from "../components/TasksFilter";
 import Table from "../components/common/Table";
 
 import { RootState } from "../store/store";
@@ -16,7 +17,7 @@ export default function TaskList() {
     if (tasksList.length === 0) {
       dispatch(fetchTasksList());
     }
-  });
+  }, []);
 
   const columns = [
     {
@@ -50,10 +51,15 @@ export default function TaskList() {
       Header: "Order",
       accessor: "order",
     },
+    {
+      Header: "Solutions",
+      accessor: "solutions_count",
+    },
   ];
 
   return (
     <div style={{ padding: "10px" }}>
+      <TasksFilter />
       <Table columns={columns} data={tasksList} />
     </div>
   );

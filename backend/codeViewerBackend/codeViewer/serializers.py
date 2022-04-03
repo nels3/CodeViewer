@@ -30,9 +30,14 @@ class CompetitionSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
+    solutions_count = serializers.SerializerMethodField('get_solutions_count')
+
     class Meta:
         model = Task
         fields = '__all__'
+
+    def get_solutions_count(self, task):
+        return len(Solution.objects.filter(task=task))
 
 
 class SolutionSerializer(serializers.ModelSerializer):

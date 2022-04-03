@@ -3,8 +3,10 @@ import { fetchCompetitionsList } from "./competitionsThunk";
 
 export interface CompetitionsSlice {
   list: [];
+  fullList: [];
   competitionSeries: string;
   loadingList: Boolean;
+  names: [];
 }
 
 const initialState: CompetitionsSlice = {
@@ -12,6 +14,7 @@ const initialState: CompetitionsSlice = {
   fullList: [],
   competitionSeries: "All",
   loadingList: true,
+  names: [],
 };
 
 export const competitionsSlice = createSlice({
@@ -27,6 +30,7 @@ export const competitionsSlice = createSlice({
       } else {
         state.list = state.fullList;
       }
+      return state;
     },
   },
   extraReducers: (builder) => {
@@ -34,6 +38,8 @@ export const competitionsSlice = createSlice({
       state.list = action.payload;
       state.fullList = action.payload;
       state.loadingList = false;
+      const names = action.payload.map((competition) => competition.name);
+      state.names = ["All"].concat(names);
     });
   },
 });

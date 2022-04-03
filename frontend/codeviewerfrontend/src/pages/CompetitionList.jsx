@@ -21,7 +21,7 @@ export default function CompetitionList() {
     if (competitionList.length === 0) {
       dispatch(fetchCompetitionsList(competitionSeries));
     }
-  });
+  }, []);
 
   const columns = [
     {
