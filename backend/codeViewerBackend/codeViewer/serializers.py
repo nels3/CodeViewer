@@ -8,7 +8,7 @@ class CompetitionSeriesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CompetitionSeries
-        fields = ['name', 'link', 'competitions_count', 'tasks_count']
+        fields = '__all__'
 
     def get_competitions_count(self, competition_series):
         return len(Competition.objects.filter(series=competition_series))

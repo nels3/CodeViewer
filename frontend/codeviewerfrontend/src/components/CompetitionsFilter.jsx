@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useTable } from "react-table";
 
 import Dropdown from "./common/Dropdown";
 
@@ -20,12 +19,16 @@ export default function CompetitionsFilter() {
 
   useEffect(() => {
     document.title = `Series`;
-    if (series_names.length == 0) {
+    if (series_names.length === 0) {
       dispatch(fetchSeriesList());
     }
-  }, []);
+  });
+
   return (
-    <div style={{ paddingBottom: "10px" }}>
+    <div style={{ paddingBottom: "10px", display: "flex" }}>
+      <h5 style={{ paddingRight: "20px", paddingTop: "4px" }}>
+        Selected series:
+      </h5>
       <Dropdown
         options={series_names}
         title={selected_series}

@@ -1,11 +1,15 @@
 import React from "react";
-import "./App.css";
-import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/navbar/Navbar";
+
 import CompetitionList from "./pages/CompetitionList";
 import SeriesList from "./pages/SeriesList";
 import TaskList from "./pages/TaskList";
+
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./static/common.css";
 
 function App() {
   return (

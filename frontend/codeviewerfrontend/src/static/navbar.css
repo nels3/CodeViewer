@@ -1,0 +1,3 @@
+.navbar a:not(.active):hover {
+  color: #e3c4e6;
+}

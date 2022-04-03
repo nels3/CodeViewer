@@ -18,8 +18,10 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
+  color: #ffffff;
   &.active {
     color: #000000;
+    background-color: #e3c4e6;
   }
 `;
 
