@@ -25,12 +25,9 @@ export const tasksSlice = createSlice({
         state.list = state.fullList.filter(
           (task) => task.competition === action.payload
         );
-        console.log("ustawiam dla");
-        console.log(action.payload);
       } else {
         state.list = state.fullList;
       }
-      console.log(state);
       return state;
     },
   },
