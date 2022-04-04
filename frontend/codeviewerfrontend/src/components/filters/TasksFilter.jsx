@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Dropdown from "./common/Dropdown";
+import Dropdown from "./../common/Dropdown";
 
-import { setSelectedCompetitionName } from "../store/slices/tasks/tasksSlice";
-import { fetchCompetitionsList } from "../store/slices/competitions/competitionsThunk";
+import { setSelectedCompetitionName } from "../../store/slices/tasks/tasksSlice";
+import { fetchCompetitionsList } from "../../store/slices/competitions/competitionsThunk";
 
 export default function TasksFilter() {
   const competitionNames = useSelector(

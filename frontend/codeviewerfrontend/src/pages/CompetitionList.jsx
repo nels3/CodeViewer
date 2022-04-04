@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Table from "../components/common/Table";
-import CompetitionsFilter from "../components/CompetitionsFilter";
+import CompetitionsFilter from "../components/filters/CompetitionsFilter";
 
 import { RootState } from "../store/store";
 import { fetchCompetitionsList } from "../store/slices/competitions/competitionsThunk";

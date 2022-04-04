@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Dropdown from "./common/Dropdown";
+import Dropdown from "../common/Dropdown";
 
-import { setCompetitionSeries } from "../store/slices/competitions/competitionsSlice";
-import { fetchSeriesList } from "../store/slices/series/seriesThunk";
+import { setCompetitionSeries } from "../../store/slices/competitions/competitionsSlice";
+import { fetchSeriesList } from "../../store/slices/series/seriesThunk";
 
 export default function CompetitionsFilter() {
   const seriesNames = useSelector((state: RootState) => state.series.names);

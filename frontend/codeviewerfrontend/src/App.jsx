@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import CompetitionList from "./pages/CompetitionList";
 import SeriesList from "./pages/SeriesList";
 import TaskList from "./pages/TaskList";
+import SolutionList from "./pages/SolutionList";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/competition" element={<CompetitionList />} />
         <Route exact path="/series" element={<SeriesList />} />
         <Route exact path="/tasks" element={<TaskList />} />
+        <Route exact path="/solutions" element={<SolutionList />} />
       </Routes>
     </BrowserRouter>
   );

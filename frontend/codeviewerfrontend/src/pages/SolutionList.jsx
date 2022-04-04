@@ -2,20 +2,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import TasksFilter from "../components/filters/TasksFilter";
+import SolutionsFilter from "../components/filters/SolutionsFilter";
 import Table from "../components/common/Table";
 
 import { RootState } from "../store/store";
-import { fetchTasksList } from "../store/slices/tasks/tasksThunk";
+import { fetchSolutionsList } from "../store/slices/solutions/solutionsThunk";
 
-export default function TaskList() {
-  const tasksList = useSelector((state: RootState) => state.tasks.list);
+export default function SolutionList() {
+  const solutionsList = useSelector((state: RootState) => state.solutions.list);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = `Tasks`;
-    if (tasksList.length === 0) {
-      dispatch(fetchTasksList());
+    document.title = `Solutions`;
+    if (solutionsList.length === 0) {
+      dispatch(fetchSolutionsList());
     }
   }, []);
 
@@ -59,8 +59,8 @@ export default function TaskList() {
 
   return (
     <div style={{ padding: "10px" }}>
-      <TasksFilter />
-      <Table columns={columns} data={tasksList} />
+      <SolutionsFilter />
+      <Table columns={columns} data={solutionsList} />
     </div>
   );
 }

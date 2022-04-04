@@ -6,13 +6,15 @@ export interface TasksSlice {
   fullList: [];
   selectedCompetitionName: string;
   loadingList: Boolean;
+  names: [];
 }
 
-const initialState: CompetitionsSlice = {
+const initialState: TasksSlice = {
   list: [],
   fullList: [],
   selectedCompetitionName: "All",
   loadingList: false,
+  names: [],
 };
 
 export const tasksSlice = createSlice({
@@ -23,7 +25,7 @@ export const tasksSlice = createSlice({
       state.selectedCompetitionName = action.payload;
       if (action.payload !== "All") {
         state.list = state.fullList.filter(
-          (task) => task.competition === action.payload
+          (task) => task.title === action.payload
         );
       } else {
         state.list = state.fullList;
@@ -36,6 +38,8 @@ export const tasksSlice = createSlice({
       state.list = action.payload;
       state.fullList = action.payload;
       state.loadingList = false;
+      const names = action.payload.map((task) => task.title);
+      state.names = ["All"].concat(names);
     });
   },
 });
