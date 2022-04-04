@@ -1,18 +1,18 @@
 import React from "react";
-import { Nav, NavLink, NavMenu } from "./NavbarElements";
+import { NavLink } from "react-router-dom";
 
 import "../../static/navbar.css";
 
 const Navbar = () => {
   return (
     <>
-      <Nav className="navbar">
-        <NavMenu>
+      <nav className="navbar">
+        <div>
           <NavLink to="/competition">Competition</NavLink>
           <NavLink to="/series">Series</NavLink>
           <NavLink to="/tasks">Tasks</NavLink>
-        </NavMenu>
-      </Nav>
+        </div>
+      </nav>
     </>
   );
 };
