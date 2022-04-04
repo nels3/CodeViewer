@@ -21,39 +21,12 @@ export default function SolutionList() {
 
   const columns = [
     {
-      Header: "Link",
-      accessor: "link",
-      Cell: ({ cell: { value } }) => (
-        <a target="_blank" href={value} rel="noreferrer">
-          Link
-        </a>
-      ),
+      Header: "Task",
+      accessor: "task",
     },
     {
-      Header: "Title",
-      accessor: "title",
-    },
-    {
-      Header: "Short description",
-      accessor: "description",
-    },
-    {
-      Header: "Tag",
-      accessor: "tag",
-    },
-
-    {
-      Header: "Competition",
-      accessor: "competition",
-    },
-
-    {
-      Header: "Order",
-      accessor: "order",
-    },
-    {
-      Header: "Solutions",
-      accessor: "solutions_count",
+      Header: "Id",
+      accessor: "id",
     },
   ];
 

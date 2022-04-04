@@ -7,6 +7,7 @@ import Table from "../components/common/Table";
 
 import { RootState } from "../store/store";
 import { fetchTasksList } from "../store/slices/tasks/tasksThunk";
+import { setSelectedTaskName } from "../store/slices/solutions/solutionsSlice";
 
 export default function TaskList() {
   const tasksList = useSelector((state: RootState) => state.tasks.list);
@@ -18,6 +19,10 @@ export default function TaskList() {
       dispatch(fetchTasksList());
     }
   }, []);
+
+  const setSelectedTask = (e, selectedOption) => {
+    dispatch(setSelectedTaskName(selectedOption));
+  };
 
   const columns = [
     {
@@ -54,6 +59,14 @@ export default function TaskList() {
     {
       Header: "Solutions",
       accessor: "solutions_count",
+      Cell: ({ cell: { value }, row }) => (
+        <Link
+          onClick={(e) => setSelectedTask(e, row.original.title)}
+          to="/solutions"
+        >
+          {value}
+        </Link>
+      ),
     },
   ];
 
